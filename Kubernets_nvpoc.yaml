@@ -8,7 +8,7 @@ spec:
   replicas: 1
   selector:
     matchLabels:
-      service: webapp-service
+      service: webapp
   template:
     metadata:
       labels:
@@ -16,7 +16,7 @@ spec:
         service: webapp
     spec:
       containers:
-        - name: webapp-container
+        - name: webapp
           image: nvdsfpoc.azurecr.io/sudarshan-jhawar/productapi:13
           imagePullPolicy: IfNotPresent
           ports:
@@ -31,7 +31,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapp-service
+  name: webapp
   labels:
     app: docker-test
     service: webapp
