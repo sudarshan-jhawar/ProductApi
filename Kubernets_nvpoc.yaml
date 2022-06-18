@@ -1,23 +1,23 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: webapi
+  name: webapp
   labels:
     app: docker-test
 spec:
   replicas: 1
   selector:
     matchLabels:
-      service: webapi
+      service: webapp-service
   template:
     metadata:
       labels:
         app: docker-test
-        service: webapi
+        service: webapp
     spec:
       containers:
-        - name: webapi
-          image: nvdsfpoc.azurecr.io/sudarshan-jhawar/productapi:18
+        - name: webapp-container
+          image: nvdsfpoc.azurecr.io/sudarshan-jhawar/productapi:13
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
@@ -25,20 +25,21 @@ spec:
           env:
             - name: ASPNETCORE_URLS
               value: http://+:80
-
+            - name: WebApiBaseAddress
+              value: http://webapi
 ---
 apiVersion: v1
 kind: Service
 metadata:
-  name: webapi
+  name: webapp-service
   labels:
     app: docker-test
-    service: webapi
+    service: webapp
 spec:
+  type: LoadBalancer
   ports:
-    - port: 80              
-      targetPort: 9376
+    - port: 80
+      targetPort: 80
       protocol: TCP
-      type: LoadBalancer
   selector:
-    service: webapi
+    service: webapp
