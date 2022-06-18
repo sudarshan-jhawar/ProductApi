@@ -6,12 +6,14 @@ metadata:
     app: docker-test
 spec:
   replicas: 1
-
+  selector:
+    matchLabels:
+      app: docker-test
   template:
     metadata:
       labels:
         app: docker-test
-    spec:
+     spec:
       containers:
         - name: webapp
           image: nvdsfpoc.azurecr.io/sudarshan-jhawar/productapi:13
@@ -30,7 +32,7 @@ kind: Service
 metadata:
   name: webapp
   labels:
-    app: docker-test	
+    app: docker-test
 spec:
   type: LoadBalancer
   ports:
