@@ -23,7 +23,6 @@ spec:
             - containerPort: 80
               protocol: TCP
               targetPort: 9376
-              type: LoadBalancer
           env:
             - name: ASPNETCORE_URLS
               value: http://+:80
@@ -41,5 +40,6 @@ spec:
     - port: 80
       targetPort: 80
       protocol: TCP
+      type: LoadBalancer
   selector:
     service: webapi
