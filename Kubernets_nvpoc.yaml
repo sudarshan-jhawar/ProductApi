@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: webapp
-          image: nvdsfpoc.azurecr.io/sudarshan-jhawar/productapi:13
+          image: nvdsfpoc.azurecr.io/sudarshan-jhawar/productapi:25
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80
