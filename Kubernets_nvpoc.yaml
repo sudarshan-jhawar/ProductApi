@@ -25,6 +25,8 @@ spec:
           env:
             - name: ASPNETCORE_URLS
               value: http://+:80
+       nodeSelector:
+      kubernetes.io/os: linux
 ---
 apiVersion: v1
 kind: Service
