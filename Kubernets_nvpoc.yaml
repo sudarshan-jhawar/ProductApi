@@ -1,42 +1,37 @@
 apiVersion: apps/v1
+
 kind: Deployment
+
 metadata:
-  name: webapp
-  labels:
-    app: docker-test
+
+  name: nginx-deployment
+
 spec:
-  replicas: 1
+
   selector:
+
     matchLabels:
-      service: webapp
+
+      app: nginx
+
+  replicas: 2 # tells deployment to run 2 pods matching the template
+
   template:
+
     metadata:
+
       labels:
-        app: docker-test
-        service: webapp
+
+        app: nginx
+
     spec:
+
       containers:
-        - name: webapp
-          image: nvdsfpoc.azurecr.io/sudarshan-jhawar/productapi:25
-          imagePullPolicy: IfNotPresent
-          ports:
-            - containerPort: 80
-              protocol: TCP
-            - containerPort: 4001
-              protocol: TCP
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: webapp
-  labels:
-    app: docker-test
-    service: webapp
-spec:
-  type: LoadBalancer
-  ports:
-    - port: 80
-      targetPort: 80
-      protocol: TCP
-  selector:
-    service: webapp
+
+      - name: nginx
+
+        image: nginx:1.14.2
+
+        ports:
+
+        - containerPort: 80
