@@ -8,7 +8,7 @@ metadata:
    
     app.kubernetes.io/name: load-balancer-example
    
-  name: hello-world
+  name: Product-Api
    
 spec:
    
@@ -32,9 +32,9 @@ spec:
    
       containers:
    
-      - image: gcr.io/google-samples/node-hello:1.0
+      - image: nvdsfpoc.azurecr.io/sudarshan-jhawar/productapi:32
    
-        name: hello-world
+        name: Product-Api
    
         ports:
    
