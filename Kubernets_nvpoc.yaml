@@ -8,7 +8,7 @@ metadata:
    
     app.kubernetes.io/name: load-balancer-example
    
-  name: Product-Api
+  name: product-api
    
 spec:
    
@@ -34,7 +34,7 @@ spec:
    
       - image: nvdsfpoc.azurecr.io/sudarshan-jhawar/productapi:32
    
-        name: Product-Api
+        name: product-api
    
         ports:
    
